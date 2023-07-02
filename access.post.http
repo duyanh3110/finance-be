@@ -1,0 +1,25 @@
+@url_dev=http://localhost:3000
+
+## Sign Up
+# POST {{url_dev}}/users
+# Content-Type: application/json
+
+# {
+#     "fullName": "Alex Dale",
+#     "email": "test_user2@gmail.com",
+#     "password": "abc123",
+#     "id": "69d07dca-9ddc-432f-9826-d230e28e4622"
+# }
+
+## Sign In
+# POST {{url_dev}}/login
+# Content-Type: application/json
+
+# {
+#   "email": "test_user@gmail.com",
+#   "password": "abc123"
+# }
+
+## Get wallet information
+# GET {{url_dev}}/wallets/bfa1e19c-caa3-4c9e-b57a-91261235a042
+# Content-Type: application/json
