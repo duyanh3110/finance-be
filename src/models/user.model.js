@@ -1,7 +1,5 @@
 "use strict";
 
-const Key = require("./key.model");
-
 module.exports = (sequelize, DataTypes) => {
 	const User = sequelize.define(
 		"user",
