@@ -11,6 +11,13 @@ class AccessController {
 			},
 		}).send(res);
 	};
+
+	static login = async (req, res, next) => {
+		new CREATED({
+			message: "login successfully!",
+			metadata: await AccessService.login(req.body),
+		}).send(res);
+	};
 }
 
 module.exports = AccessController;
