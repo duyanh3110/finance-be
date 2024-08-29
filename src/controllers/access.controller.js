@@ -1,4 +1,4 @@
-const { CREATED } = require("../core/success.response");
+const { CREATED, SuccessResponse } = require("../core/success.response");
 const AccessService = require("../services/access.services");
 
 class AccessController {
@@ -16,6 +16,13 @@ class AccessController {
 		new CREATED({
 			message: "login successfully!",
 			metadata: await AccessService.login(req.body),
+		}).send(res);
+	};
+
+	static logout = async (req, res, next) => {
+		new SuccessResponse({
+			message: "logout successfully!",
+			metadata: await AccessService.logout(req.keyStore),
 		}).send(res);
 	};
 }

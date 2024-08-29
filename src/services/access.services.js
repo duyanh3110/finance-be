@@ -4,7 +4,7 @@ const crypto = require("node:crypto");
 const bcrypt = require("bcrypt");
 const db = require("../models");
 const KeyTokenService = require("./key.service");
-const { BadRequestError } = require("../core/error.response");
+const { BadRequestError, AuthFailureError } = require("../core/error.response");
 const { createTokenPair } = require("../utils/auth");
 const { getInfoData, generateKeys } = require("../utils");
 const UserService = require("./user.service");
@@ -87,6 +87,10 @@ class AccessService {
 			}),
 			tokens,
 		};
+	};
+
+	static logout = async (keyStore) => {
+		return KeyTokenService.removeKeyById(keyStore.id);
 	};
 }
 
