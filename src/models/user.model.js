@@ -27,6 +27,14 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.STRING,
 				allowNull: false,
 			},
+			date_birth: {
+				type: DataTypes.DATEONLY,
+				allowNull: true,
+			},
+			phone_number: {
+				type: DataTypes.STRING,
+				allowNull: true,
+			},
 		},
 		{ timestamps: true }
 	);
