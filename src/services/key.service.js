@@ -26,10 +26,11 @@ class KeyTokenService {
 						where: {
 							user_id: userId,
 						},
+						returning: true,
+						plain: true,
 					}
 				);
-
-				return tokens ? tokens.public_key : null;
+				return tokens ? tokens[1].public_key : null;
 			} else {
 				const tokens = await db.keys.create({
 					id: crypto.randomUUID().toString(),
