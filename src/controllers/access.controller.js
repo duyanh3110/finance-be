@@ -1,5 +1,5 @@
 const { CREATED, SuccessResponse } = require("../core/success.response");
-const AccessService = require("../services/access.services");
+const AccessService = require("../services/access.service");
 
 class AccessController {
 	static signUp = async (req, res, next) => {
