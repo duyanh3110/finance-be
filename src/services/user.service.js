@@ -84,6 +84,51 @@ class UserService {
 			return error;
 		}
 	};
+
+	static updatePassword = async ({ password }, keyStore, id) => {
+		try {
+			const foundUser = await db.users.findOne({ id });
+			if (!foundUser) {
+				throw new NotFoundError("User not found!");
+			}
+
+			const correctPassword = bcrypt.compare(
+				password,
+				foundUser.password
+			);
+			if (!correctPassword)
+				throw new AuthFailureError("Authentication error");
+
+			const updatedUser = await await db.users.update(
+				{
+					password,
+				},
+				{
+					where: {
+						id,
+					},
+					returning: true,
+					plain: true,
+				}
+			);
+
+			return {
+				user: getInfoData({
+					fields: [
+						"id",
+						"email",
+						"first_name",
+						"last_name",
+						"date_birth",
+						"phone_number",
+					],
+					object: updatedUser[1],
+				}),
+			};
+		} catch (error) {
+			return error;
+		}
+	};
 }
 
 module.exports = UserService;

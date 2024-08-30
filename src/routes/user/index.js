@@ -7,5 +7,6 @@ const router = express.Router();
 router.use(authentication);
 router.get("/", asyncHandler(UserController.getUser));
 router.post("/", asyncHandler(UserController.updateUser));
+router.post("/update-password", asyncHandler(UserController.updatePassword));
 
 module.exports = router;
